@@ -1,0 +1,29 @@
+#Chris Davidson
+#November 8 2014
+#GIS 501
+
+import arcpy
+
+mxd = arcpy.mapping.MapDocument(r"C:/EsriPress/Python/Data/Exercise10/Austin_TX.mxd")
+
+df = arcpy.mapping.ListDataFrames(mxd, "Facilities")[0]
+
+addLayer = arcpy.mapping.Layer(r"C:/EsriPress/Python/Data/Exercise10/Austin/parks.shp")
+
+arcpy.mapping.AddLayer(df, addLayer, "BOTTOM")
+
+mxd.saveACopy(r"C:/EsriPress/Python/Data/Exercise10/Austin_TX_2.mxd")
+
+del mxd, addLayer
+
+mxd = arcpy.mapping.MapDocument(r"C:/EsriPress/Python/Data/Exercise10/Austin_TX.mxd")
+
+df = arcpy.mapping.ListDataFrames(mxd, "Street Trees")[0]
+
+addLayer = arcpy.mapping.Layer(r"C:/EsriPress/Python/Data/Exercise10/Austin/parks.shp")
+
+arcpy.mapping.AddLayer(df, addLayer, "BOTTOM")
+
+mxd.saveACopy(r"C:/EsriPress/Python/Data/Exercise10/Austin_TX_2.mxd")
+
+del mxd, addLayer
