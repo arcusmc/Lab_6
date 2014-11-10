@@ -1,0 +1,19 @@
+#Chris Davidson
+#November 8 2014
+#GIS 501
+
+import arcpy,os
+
+from arcpy import env
+
+from arcpy.sa import *
+
+env.workspace = "C:/EsriPress/Python/Data/Exercise09"
+
+rasterlist = arcpy.ListRasters()
+
+for raster in rasterlist:
+    
+    rasterdesc = arcpy.Describe(raster)
+    
+    arcpy.CopyRaster_management(raster,"C:/EsriPress/Python/Data/Exercise09/Raster.gdb/" + rasterdesc.basename)
