@@ -1,0 +1,34 @@
+#Chris Davidson
+#November 8 2014
+#GIS 501
+
+import arcpy
+
+from arcpy import env
+
+from arcpy.sa import *
+
+env.workspace = "C:/EsriPress/Python/Data/Exercise09"
+
+if arcpy.CheckExtension("spatial") == "Available":
+    
+    arcpy.CheckOutExtension("spatial")
+
+    orientraster = arcpy.Raster("orientation")
+
+    orientation = Slope(orientraster)
+    
+    southorient = orientation < 270
+    
+    southorient = orientation > 150
+    
+    outraster = southorient
+    
+    outraster.save("Challenge_1_2")
+
+    arcpy.CheckInExtension("spatial")
+
+else:
+    
+    print "Spatial Analyst license is not available."
+  
